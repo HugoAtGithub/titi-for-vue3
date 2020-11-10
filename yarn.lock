@@ -476,7 +476,7 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chokidar@^3.4.2:
+"chokidar@>=2.0.0 <4.0.0", chokidar@^3.4.2:
   version "3.4.3"
   resolved "https://registry.npm.taobao.org/chokidar/download/chokidar-3.4.3.tgz?cache=0&sync_timestamp=1602585381749&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fchokidar%2Fdownload%2Fchokidar-3.4.3.tgz#c1df38231448e45ca4ac588e6c79573ba6a57d5b"
   integrity sha1-wd84IxRI5FykrFiObHlXO6alfVs=
@@ -1420,6 +1420,11 @@ npm-run-path@^4.0.0:
   dependencies:
     path-key "^3.0.0"
 
+ometa@0.2.2:
+  version "0.2.2"
+  resolved "https://registry.npm.taobao.org/ometa/download/ometa-0.2.2.tgz#f53c4735ba6d56af5a46b04dfb7c4334c596d44e"
+  integrity sha1-9TxHNbptVq9aRrBN+3xDNMWW1E4=
+
 on-finished@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npm.taobao.org/on-finished/download/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -1777,6 +1782,20 @@ safe-buffer@^5.1.0:
   version "5.2.1"
   resolved "https://registry.npm.taobao.org/safe-buffer/download/safe-buffer-5.2.1.tgz?cache=0&sync_timestamp=1589682795646&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsafe-buffer%2Fdownload%2Fsafe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha1-Hq+fqb2x/dTsdfWPnNtOa3gn7sY=
+
+sass@^1.29.0:
+  version "1.29.0"
+  resolved "https://registry.npm.taobao.org/sass/download/sass-1.29.0.tgz?cache=0&sync_timestamp=1604536692062&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsass%2Fdownload%2Fsass-1.29.0.tgz#ec4e1842c146d8ea9258c28c141b8c2b7c6ab7f1"
+  integrity sha1-7E4YQsFG2OqSWMKMFBuMK3xqt/E=
+  dependencies:
+    chokidar ">=2.0.0 <4.0.0"
+
+scss@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.npm.taobao.org/scss/download/scss-0.2.4.tgz#040d903ed37c5d4fa4ad33ae1fd389ac12a4e065"
+  integrity sha1-BA2QPtN8XU+krTOuH9OJrBKk4GU=
+  dependencies:
+    ometa "0.2.2"
 
 selfsigned@^1.10.8:
   version "1.10.8"
