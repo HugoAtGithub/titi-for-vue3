@@ -1,15 +1,20 @@
 <template>
   <div>
-    <Switch/>
+    <Switch :value="y" @update:value="y = $event"/>
   </div>
-  <div>{{value}}</div>
+  <div>{{ y }}</div>
 </template>
 
 <script>
 import Switch from '../lib/Switch.vue';
+import {ref} from "vue";
 
 export default {
-  components: {Switch}
+  components: {Switch},
+  setup() {
+    const y = ref(false)
+    return {y}
+  }
 }
 </script>
 
