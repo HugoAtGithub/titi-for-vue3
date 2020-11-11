@@ -2,6 +2,7 @@
   <div>
     <Switch/>
   </div>
+  <div>{{value}}</div>
 </template>
 
 <script>
