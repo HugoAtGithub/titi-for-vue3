@@ -15,8 +15,6 @@ export default {
     return {toggle}
   }
 }
-
-
 </script>
 
 <style lang="scss" scoped>
