@@ -88,18 +88,16 @@ $radius: 4px;
     }
   }
 
-  &.titi-theme-button {
-    &.titi-size-big {
-      font-size: 24px;
-      height: 48px;
-      padding: 0 16px;
-    }
+  &.titi-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
 
-    &.titi-size-small {
-      font-size: 12px;
-      height: 20px;
-      padding: 0 4px;
-    }
+  &.titi-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
   }
 }
 </style>
