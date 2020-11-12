@@ -1,19 +1,19 @@
 <template>
-  <div :size="size">
-    <button v-bind="rest">
+  <div class="titi-button">
+    <button :class="{[`theme-${theme}`]: theme}">
       <slot/>
     </button>
   </div>
 </template>
 <script lang="ts">
 export default {
-  inheritAttrs: false,
-  props: {},
-  setup(props, context) {
-    const {size, ...rest} = context.attrs;
-    console.log(size, rest)
-    return {size, rest}
-  }
+  props: {
+    theme: {
+      type: String,
+      default: 'button'
+    }
+  },
+
 }
 </script>
 <style lang="scss">
