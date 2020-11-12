@@ -1,20 +1,22 @@
 <template>
   <template v-if="visible">
-    <div class="titi-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="titi-dialog-wrapper">
-      <div class="titi-dialog">
-        <header>
-          <slot name="title"/>
-          <span class="titi-dialog-close" @click="close"></span></header>
-        <main>
-          <slot name="content"/>
-        </main>
-        <footer>
-          <Button level="main" @click="ok">OK</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <Teleport to="body">
+      <div class="titi-dialog-overlay" @click="onClickOverlay"></div>
+      <div class="titi-dialog-wrapper">
+        <div class="titi-dialog">
+          <header>
+            <slot name="title"/>
+            <span class="titi-dialog-close" @click="close"></span></header>
+          <main>
+            <slot name="content"/>
+          </main>
+          <footer>
+            <Button level="main" @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 
