@@ -1,5 +1,5 @@
 <template>
-  <button class="titi-button" :class="{[`theme-${theme}`]: theme}">
+  <button class="titi-button" :class="{[`titi-theme-${theme}`]: theme}">
     <slot/>
   </button>
 </template>
@@ -42,6 +42,11 @@ div {
     }
 
     &:hover, &:focus {
+      color: $blue;
+      border-color: $blue;
+    }
+
+    &:focus {
       outline: none;
     }
 
