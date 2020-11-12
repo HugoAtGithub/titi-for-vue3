@@ -1,5 +1,5 @@
 <template>
-  <button class="titi-button" :class="classes">
+  <button class="titi-button" :class="classes" :disabled="disabled">
     <slot/>
   </button>
 </template>
@@ -19,6 +19,10 @@ export default {
     level: {
       type: String,
       default: 'normal'
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     }
   },
   setup(props) {
@@ -41,6 +45,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$grey: grey;
 
 .titi-button {
   box-sizing: border-box;
@@ -156,6 +161,24 @@ $red: red;
       &:hover, &:focus {
         color: darken($red, 10%)
       }
+    }
+  }
+
+  &.titi-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+
+  &.titi-theme-link, &.titi-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
