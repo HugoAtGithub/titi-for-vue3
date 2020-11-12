@@ -53,6 +53,26 @@ div {
     &::-moz-focus-inner {
       border: none;
     }
+
+    &.titi-theme-link {
+      border-color: transparent;
+      box-shadow: none;
+      color: $blue;
+
+      &:hover, &:focus {
+        color: lighten($blue, 10%);
+      }
+    }
+
+    &.titi-theme-text {
+      border-color: transparent;
+      box-shadow: none;
+      color: inherit;
+
+      &:hover, &:focus {
+        background: darken(white, 5%);
+      }
+    }
   }
 }
 </style>
