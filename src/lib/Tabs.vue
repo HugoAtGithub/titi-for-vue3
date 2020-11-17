@@ -1,11 +1,12 @@
 <template>
   <div class="titi-tabs">
-    <div class="titi-tabs-nav">
-      <div class="titi-tabs-nav-item" v-for="(title, index) in titles" :key="index"
+    <div class="titi-tabs-nav" ref="container">
+      <div class="titi-tabs-nav-item" :ref="el => {if (el) navItems[index] = el}"
+           v-for="(title, index) in titles" :key="index"
            @click="select(title)" :class="{selected: title === selected}">
         {{ title }}
       </div>
-      <div class="titi-tabs-nav-indicator"></div>
+      <div class="titi-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="titi-tabs-content">
       <component class="titi-tabs-content-item" :is="current" :key="current.props.title"/>
@@ -14,7 +15,7 @@
 </template>
 <script lang="ts">
 import Tab from './Tab.vue'
-import {computed} from 'vue'
+import {computed, ref, onMounted, watchEffect, onUpdated} from 'vue'
 
 export default {
   props: {
@@ -23,6 +24,25 @@ export default {
     }
   },
   setup: function (props, context) {
+    const navItems = ref<HTMLDivElement[]>([])
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
+
+    function x() {
+      const divs = navItems.value
+      const result = divs.filter(div => div.classList.contains('selected'))[0]
+      console.log(result)
+      const {width, left: titleLeft} = result.getBoundingClientRect()
+      indicator.value.style.width = width + 'px'
+      const {left: containerLeft} = container.value.getBoundingClientRect()
+      const left = titleLeft - containerLeft
+      indicator.value.style.left = left + 'px'
+      console.log(left)
+      console.log(indicator)
+    }
+
+    onMounted(x)
+    onUpdated(x)
     const defaults = context.slots.default()
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
@@ -38,7 +58,7 @@ export default {
     const select = (title: string) => {
       context.emit('update:selected', title)
     }
-    return {defaults, titles, current, select}
+    return {defaults, titles, current, select, navItems, indicator, container}
   }
 }
 </script>
@@ -68,6 +88,7 @@ $border-color: #d9d9d9;
         color: $blue;
       }
     }
+
     &-indicator {
       position: absolute;
       height: 3px;
@@ -75,6 +96,7 @@ $border-color: #d9d9d9;
       left: 0;
       bottom: -1px;
       width: 100px;
+      transition: all 250ms;
     }
   }
 
