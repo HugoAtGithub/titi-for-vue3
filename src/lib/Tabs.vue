@@ -1,18 +1,27 @@
 <template>
   <div class="titi-tabs">
     <div class="titi-tabs-nav">
-      <div class="titi-tabs-nav-item" v-for="(title, index) in titles" :key="index">{{ title }}</div>
+      <div class="titi-tabs-nav-item" v-for="(title, index) in titles" :key="index"
+           @click="select(title)" :class="{selected: title === selected}">
+        {{ title }}
+      </div>
     </div>
     <div class="titi-tabs-content">
-      <component class="titi-tabs-content-item" v-for="(tab, index) in defaults" :key="index" :is="tab"></component>
+      <component class="titi-tabs-content-item" :is="current" :key="current.props.title"/>
     </div>
   </div>
 </template>
 <script lang="ts">
 import Tab from './Tab.vue'
+import {computed} from 'vue'
 
 export default {
-  setup(props, context) {
+  props: {
+    selected: {
+      type: String
+    }
+  },
+  setup: function (props, context) {
     const defaults = context.slots.default()
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
@@ -22,7 +31,13 @@ export default {
     const titles = defaults.map(tag => {
       return tag.props.title
     })
-    return {defaults, titles}
+    const current = computed(() => {
+      return defaults.find(tag => tag.props.title === props.selected)
+    })
+    const select = (title: string) => {
+      context.emit('update:selected', title)
+    }
+    return {defaults, titles, current, select}
   }
 }
 </script>
