@@ -1,7 +1,7 @@
 <template>
   <div class="titi-tabs">
     <div class="titi-tabs-nav" ref="container">
-      <div class="titi-tabs-nav-item" :ref="el => {if (el) navItems[index] = el}"
+      <div class="titi-tabs-nav-item" :ref="el => {if(title === selected) selectedItem = el}"
            v-for="(title, index) in titles" :key="index"
            @click="select(title)" :class="{selected: title === selected}">
         {{ title }}
@@ -24,21 +24,16 @@ export default {
     }
   },
   setup: function (props, context) {
-    const navItems = ref<HTMLDivElement[]>([])
+    const selectedItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
 
     function x() {
-      const divs = navItems.value
-      const result = divs.filter(div => div.classList.contains('selected'))[0]
-      console.log(result)
-      const {width, left: titleLeft} = result.getBoundingClientRect()
+      const {width, left: titleLeft} = selectedItem.value.getBoundingClientRect()
       indicator.value.style.width = width + 'px'
       const {left: containerLeft} = container.value.getBoundingClientRect()
       const left = titleLeft - containerLeft
       indicator.value.style.left = left + 'px'
-      console.log(left)
-      console.log(indicator)
     }
 
     onMounted(x)
@@ -58,7 +53,7 @@ export default {
     const select = (title: string) => {
       context.emit('update:selected', title)
     }
-    return {defaults, titles, current, select, navItems, indicator, container}
+    return {defaults, titles, current, select, selectedItem, indicator, container}
   }
 }
 </script>
