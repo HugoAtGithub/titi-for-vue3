@@ -5,6 +5,7 @@
            @click="select(title)" :class="{selected: title === selected}">
         {{ title }}
       </div>
+      <div class="titi-tabs-nav-indicator"></div>
     </div>
     <div class="titi-tabs-content">
       <component class="titi-tabs-content-item" :is="current" :key="current.props.title"/>
@@ -52,6 +53,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-color: 1px solid $border-color;
+    position: relative;
 
     &-item {
       padding: 8px 0;
@@ -65,6 +67,14 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+    &-indicator {
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
     }
   }
 
