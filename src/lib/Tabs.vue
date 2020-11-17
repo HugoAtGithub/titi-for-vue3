@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <div v-for="(title, index) in titles" :key="index">{{ title }}</div>
-    <component v-for="(tab, index) in defaults" :key="index" :is="tab"></component>
+  <div class="titi-tabs">
+    <div class="titi-tabs-nav">
+      <div class="titi-tabs-nav-item" v-for="(title, index) in titles" :key="index">{{ title }}</div>
+    </div>
+    <div class="titi-tabs-content">
+      <component class="titi-tabs-content-item" v-for="(tab, index) in defaults" :key="index" :is="tab"></component>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -22,3 +26,35 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+$blue: #40a9ff;
+$color: #333;
+$border-color: #d9d9d9;
+
+.titi-tabs {
+  &-nav {
+    display: flex;
+    color: $color;
+    border-color: 1px solid $border-color;
+
+    &-item {
+      padding: 8px 0;
+      margin: 0 16px;
+      cursor: pointer;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.selected {
+        color: $blue;
+      }
+    }
+  }
+
+  &-content {
+    padding: 8px 0;
+  }
+}
+</style>
