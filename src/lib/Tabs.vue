@@ -1,7 +1,7 @@
 <template>
   <div class="titi-tabs">
     <div class="titi-tabs-nav" ref="container">
-      <div class="titi-tabs-nav-item" :ref="el => {if(title === selected) selectedItem = el}"
+      <div class="titi-tabs-nav-item" :ref="el => {if (title === selected) selectedItem = el}"
            v-for="(title, index) in titles" :key="index"
            @click="select(title)" :class="{selected: title === selected}">
         {{ title }}
@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import Tab from './Tab.vue'
-import {computed, ref, onMounted, watchEffect, onUpdated} from 'vue'
+import {computed, ref, onMounted, watchEffect} from 'vue'
 
 export default {
   props: {
@@ -23,21 +23,24 @@ export default {
       type: String
     }
   },
-  setup: function (props, context) {
+  setup(props, context) {
     const selectedItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
 
-    function x() {
-      const {width, left: titleLeft} = selectedItem.value.getBoundingClientRect()
-      indicator.value.style.width = width + 'px'
-      const {left: containerLeft} = container.value.getBoundingClientRect()
-      const left = titleLeft - containerLeft
-      indicator.value.style.left = left + 'px'
-    }
-
-    onMounted(x)
-    onUpdated(x)
+    onMounted(() => {
+          const {left: containerLeft} = container.value.getBoundingClientRect()
+          watchEffect(() => {
+                const {width, left: titleLeft} = selectedItem.value.getBoundingClientRect()
+                indicator.value.style.width = width + 'px'
+                const left = titleLeft - containerLeft
+                indicator.value.style.left = left + 'px'
+              }, {
+                flush: 'sync'
+              }
+          )
+        }
+    )
     const defaults = context.slots.default()
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
@@ -67,7 +70,7 @@ $border-color: #d9d9d9;
   &-nav {
     display: flex;
     color: $color;
-    border-color: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
     position: relative;
 
     &-item {
