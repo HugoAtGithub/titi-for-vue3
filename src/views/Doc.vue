@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.router-link-active {
+  text-decoration: underline;
+}
+
 .layout {
   display: flex;
   flex-direction: column;
