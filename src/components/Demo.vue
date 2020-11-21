@@ -33,7 +33,7 @@ export default {
     const toggleCode = () => {
       codeVisible.value = !codeVisible.value
     }
-    const codeVisible = ref(true)
+    const codeVisible = ref(false)
     return {Prism, html, codeVisible, toggleCode}
   }
 }
