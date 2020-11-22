@@ -3,7 +3,7 @@
     <div class="topnavAndBanner">
       <Topnav/>
       <div class="banner">
-        <h1>titi UI</h1>
+        <h1>TiTi UI</h1>
         <h2>常用 UI 组件</h2>
         <p class="actions">
           <a href="https://github.com">Github</a>
