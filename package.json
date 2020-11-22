@@ -1,6 +1,7 @@
 {
   "name": "titi",
   "version": "0.0.1",
+  "types": "src/shims-vue.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
