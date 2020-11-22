@@ -21,8 +21,6 @@
         <h3>基于 Vue 3</h3>
         <p>使用了 Vue 3 Composition API</p>
       </li>
-    </ul>
-    <ul>
       <li>
         <svg class="icon">
           <use xlink:href="#icon-ts"></use>
@@ -30,8 +28,6 @@
         <h3>基于 Typescript</h3>
         <p>源代码采用 Typescript 编写</p>
       </li>
-    </ul>
-    <ul>
       <li>
         <svg class="icon">
           <use xlink:href="#icon-light"></use>
@@ -64,12 +60,22 @@ $color: #007974;
 
 .features {
   margin: 64px auto;
-  width: 400px;
+  padding: 0 16px;
   @media (min-width: 800px) {
     width: 800px;
+    > ul {
+      > li {
+        width: 50%;
+      }
+    }
   }
   @media (min-width: 1200px) {
     width: 1200px;
+    > ul {
+      > li {
+        width: 33.3333%;
+      }
+    }
   }
 
   > ul {
@@ -77,7 +83,6 @@ $color: #007974;
     flex-wrap: wrap;
 
     > li {
-      width: 400px;
       margin: 16px 0;
       display: grid;
       justify-content: start;
@@ -96,7 +101,7 @@ $color: #007974;
 
       > h3 {
         grid-area: title;
-        font-size: 20px;
+        font-size: 28px;
       }
 
       > p {
@@ -104,14 +109,6 @@ $color: #007974;
       }
     }
   }
-
-  @media screen and (max-width: 400px) {
-    width: 100vw;
-    > ul > li {
-      width: 100vw;
-    }
-  }
-
 }
 
 .banner {
