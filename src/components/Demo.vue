@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Button from '../lib/Button.vue';
+import {Button} from "../lib/index";
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-solarizedlight.css'
 import {computed, ref} from "vue";
