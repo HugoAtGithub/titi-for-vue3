@@ -6,6 +6,7 @@
     "dist/lib/*"
   ],
   "main": "dist/lib/titi.js",
+  "module": "dist/lib/titi.esm.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
