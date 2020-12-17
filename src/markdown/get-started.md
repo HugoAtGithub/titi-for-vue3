@@ -7,7 +7,7 @@
 import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "titi-ui"
 ```
 
-就可以使用我提供的组件了。
+就可以使用了。
 
 ## Vue 单文件组件
 
