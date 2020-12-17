@@ -6,7 +6,7 @@
         <h1>TiTi UI</h1>
         <h2>常用 UI 组件</h2>
         <p class="actions">
-          <a href="https://github.com">Github</a>
+          <a href="https://github.com/done3t/titi-for-vue3">Github</a>
           <router-link to="/doc">开始</router-link>
         </p>
       </div>
